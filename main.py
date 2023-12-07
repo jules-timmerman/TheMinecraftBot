@@ -9,18 +9,16 @@ bot_token = None
 server_ip = None
 server_rcon_port = None
 server_rcon_password = None
-server_member_role_name = None
 
 
 def config_reload():
-    global bot_token, server_ip, server_rcon_port, server_rcon_password, server_member_role_name
+    global bot_token, server_ip, server_rcon_port, server_rcon_password
     with open('config.json', 'r') as config:
         config = json.load(config)
     bot_token = str(config["bot_token"])
     server_ip = str(config["server_ip"])
     server_rcon_port = int(config["server_rcon_port"])
     server_rcon_password = str(config["server_rcon_password"])
-    server_member_role_name = config["server_member_role_name"]
 
 
 config_reload()
@@ -49,17 +47,6 @@ async def on_ready():
 
 
 
-@bot.event
-async def on_member_update(before, after):
-    if server_member_role_name in [role.name for role in after.roles]:
-        if server_member_role_name not in [role.name for role in before.roles]:
-            await after.send(embed=embeds.MCaddUserEmbed())
-            await set_mcname_permission(after, True)
-
-    if server_member_role_name not in [role.name for role in after.roles]:
-        if server_member_role_name in [role.name for role in before.roles]:
-            await set_mcname_permission(after, False)
-            await remove_from_whitelist(after)
 
 
 async def remove_from_whitelist(member):

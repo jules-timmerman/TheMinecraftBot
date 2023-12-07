@@ -5,7 +5,6 @@
     "server_ip": "",
     "server_rcon_port": 25575,
     "server_rcon_password": "",
-    "server_member_role_name": "",
     "embed_title": "MC-Server-Bot",
     "server_port": 25565
 }

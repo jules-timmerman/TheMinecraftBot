@@ -11,18 +11,16 @@ bot_owner_id = None
 server_ip = None
 server_rcon_port = None
 server_rcon_password = None
-server_member_role_name = None
 bot_name = None
 
 def config_reload():
-    global server_ip, server_rcon_port, server_rcon_password, server_member_role_name, bot_name, bot_owner_id
+    global server_ip, server_rcon_port, server_rcon_password, bot_name, bot_owner_id
     with open('config.json', 'r') as config:
         config = json.load(config)
     bot_owner_id = int(config["bot_owner_id"])
     server_ip = config["server_ip"]
     server_rcon_port = config["server_rcon_port"]
     server_rcon_password = config["server_rcon_password"]
-    server_member_role_name = config["server_member_role_name"]
     bot_name = config["bot_name"]
 
 class mccommands(commands.Cog):
