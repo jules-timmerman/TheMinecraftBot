@@ -26,8 +26,6 @@ def MCWhitelistaddEmbed():
     config_reload()
     embed = discord.Embed(title=embed_title, color=discord.Color.green(),
                           description="Your Minecraft username has been saved, and you have been added to the whitelist! If you change your Minecraft username you can just simple use `/mc-setname` again to also update that name on the Minecraft server")
-    embed.add_field(name="IP", value=f"`{server_ip}`")
-    embed.add_field(name="Port",value=f"`{server_port}`")
     embed.set_footer(text=f"created by {bot_name} | {datetime.now().strftime('%d/%m/%y %H:%M:%S')}")
     return embed
 
